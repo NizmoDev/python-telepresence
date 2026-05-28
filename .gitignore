@@ -6,4 +6,4 @@ __pycache__/
 AppData/
 .docker/
 .kube/
-*.log
+*.log 
