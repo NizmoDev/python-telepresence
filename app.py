@@ -1,10 +1,15 @@
 from flask import Flask, request, jsonify
+import socket
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Hello from local Python server"
+    return jsonify({
+        "message": "RUNNING LOCALLY via TELEPRESENCE",
+        "hostname": socket.gethostname(),
+        "client_ip": request.remote_addr
+    })
 
 @app.route("/api/hello")
 def hello():
@@ -22,5 +27,4 @@ def echo():
     })
 
 if __name__ == "__main__":
-    # IMPORTANT: écouter sur 0.0.0.0 pour Telepresence
-    app.run(host="0.0.0.0", port=8080, debug=True)
+    app.run(host="0.0.0.0", port=8080) 
