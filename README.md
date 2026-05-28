@@ -20,7 +20,7 @@ Avant de commencer, assure-toi d’avoir installé :
 
 ### 1. Cloner le projet
 
-git clone <URL_DU_REPO>
+git clone https://github.com/NizmoDev/python-telepresence.git
 cd python-telepresence
 
 ---
