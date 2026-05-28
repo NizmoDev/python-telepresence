@@ -22,6 +22,8 @@ Avant de commencer, assure-toi d’avoir installé :
 
 ```bash
 git clone https://github.com/NizmoDev/python-telepresence.git
+```
+```bash
 cd python-telepresence
 ```
 
@@ -29,7 +31,9 @@ cd python-telepresence
 
 ### 2. Vérifier le cluster Kubernetes
 
+```bash
 kubectl get svc
+```
 
 ---
 
@@ -37,13 +41,17 @@ kubectl get svc
 
 ### 1. Se connecter au cluster
 
+```bash
 telepresence connect
+```
 
 ---
 
 ### 2. Intercepter le service Python
 
+```bash
 telepresence intercept python-app --port 8080:8080
+```
 
 Cela redirige le trafic du service Kubernetes vers ton application locale.
 
@@ -51,7 +59,9 @@ Cela redirige le trafic du service Kubernetes vers ton application locale.
 
 ## 🐍 Lancer l’application en local
 
+```bash
 python app.py
+```
 
 ---
 
@@ -69,7 +79,9 @@ http://python-app:8080/
 
 ## 🔍 Vérifier les intercepts
 
+```bash
 telepresence list
+```
 
 ---
 
@@ -84,7 +96,9 @@ telepresence list
 
 ## 🛑 Arrêter l’interception
 
+```bash
 telepresence quit
+```
 
 ---
 
@@ -97,10 +111,18 @@ telepresence quit
 
 ## 🧪 Commandes utiles
 
+```bash
 kubectl get pods
+```
+```bash
 kubectl get svc
+```
+```bash
 telepresence status
+```
+```bash
 telepresence list
+```
 
 ---
 
