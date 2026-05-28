@@ -128,8 +128,8 @@ telepresence list
 
 ## 📚 Tech stack
 
-Python
-Kubernetes
-Docker
-Telepresence
-Nginx
+- Python
+- Kubernetes
+- Docker
+- Telepresence
+- Nginx
