@@ -1,132 +1,102 @@
 # Python Telepresence Cluster (Kubernetes + Docker)
 
-Ce projet permet de développer une application Python localement tout en l'exécutant dans un cluster Kubernetes grâce à Telepresence.
+This project shows how to develop a Python application locally while routing Kubernetes service traffic to it with Telepresence.
 
----
+## Prerequisites
 
-## 🚀 Prérequis
-
-Avant de commencer, assure-toi d’avoir installé :
+Before you start, make sure you have:
 
 - Docker
-- Kubernetes (kubectl configuré)
+- Kubernetes with `kubectl` configured
 - Telepresence
 - Python 3.8+
-- Un cluster Kubernetes fonctionnel
+- A working Kubernetes cluster
 
----
+## Installation
 
-## 📦 Installation
-
-### 1. Cloner le projet
+### 1. Clone the project
 
 ```bash
-git clone https://github.com/NizmoDev/python-telepresence.git
-```
-```bash
-cd python-telepresence
+git clone https://github.com/NizmoDev/Telepresence.git
+cd Telepresence
 ```
 
----
-
-### 2. Vérifier le cluster Kubernetes
+### 2. Check the Kubernetes cluster
 
 ```bash
 kubectl get svc
 ```
 
----
+## Connect To The Cluster With Telepresence
 
-## 🔌 Connexion au cluster avec Telepresence
-
-### 1. Se connecter au cluster
+### 1. Connect to the cluster
 
 ```bash
 telepresence connect
 ```
 
----
-
-### 2. Intercepter le service Python
+### 2. Intercept the Python service
 
 ```bash
 telepresence intercept python-app --port 8080:8080
 ```
 
-Cela redirige le trafic du service Kubernetes vers ton application locale.
+This redirects traffic from the Kubernetes service to your local application.
 
----
-
-## 🐍 Lancer l’application en local
+## Run The Application Locally
 
 ```bash
 python app.py
 ```
 
----
+## Access The Application
 
-## 🌐 Accès à l’application
+Access through Kubernetes or the cluster ingress:
 
-Accès via Kubernetes (Nginx / cluster)
-
+```text
 http://10.244.0.9/
+```
 
-Accès via service intercepté
+Access through the intercepted service:
 
+```text
 http://python-app:8080/
+```
 
----
-
-## 🔍 Vérifier les intercepts
+## Check Active Intercepts
 
 ```bash
 telepresence list
 ```
 
----
+## How It Works
 
-## 🧠 Résumé du fonctionnement
+- Kubernetes hosts the `python-app` service.
+- Telepresence intercepts the service traffic.
+- Your Python code runs locally.
+- The cluster redirects requests to your machine.
 
-- Kubernetes héberge le service python-app
-- Telepresence intercepte le trafic
-- Ton code Python tourne en local
-- Le cluster redirige les requêtes vers ta machine
-
----
-
-## 🛑 Arrêter l’interception
+## Stop The Intercept
 
 ```bash
 telepresence quit
 ```
 
----
+## Notes
 
-## 📌 Notes
+- Make sure port `8080` is available.
+- The `python-app` service must exist in Kubernetes.
 
-- Vérifie que le port 8080 est libre
-- Le service python-app doit exister dans Kubernetes
-
----
-
-## 🧪 Commandes utiles
+## Useful Commands
 
 ```bash
 kubectl get pods
-```
-```bash
 kubectl get svc
-```
-```bash
 telepresence status
-```
-```bash
 telepresence list
 ```
 
----
-
-## 📚 Tech stack
+## Tech Stack
 
 - Python
 - Kubernetes
